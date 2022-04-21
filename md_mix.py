@@ -164,7 +164,7 @@ if __name__=="__main__":
     parser.add_argument("--model_dir", type=str,default='/data/transformers/bert-base-uncased', help="as named")
     parser.add_argument('--max_len', type=int, default=64, help='length of input sentence')
     parser.add_argument('--n_classes', type=int, default=2, help=' ')
-    parser.add_argument('--epochs', type=int, default=50, help='Emax epochs of algorithm2 in noisy CV paper')
+    parser.add_argument('--epochs', type=int, default=10, help='Emax epochs of algorithm2 in noisy CV paper')
     parser.add_argument('--lr', type=float, default=1e-5,help='learning rate')
     parser.add_argument('--lr_scale', type=int, default=100, help='as named')
     parser.add_argument('--alpha', default=4, type=float, help='parameter for Beta')
