@@ -1,0 +1,129 @@
+arg1,arg2,verb,sentence,verb_idx,label
+kindness,,acknowledge, We must acknowledge the kindness she showed towards us .,2,0
+deed,,acknowledge, acknowledge the deed .,0,0
+prince,,acknowledge, The Crown Prince was acknowledged as the true heir to the throne .,4,0
+resident,,adhere, The residents of this village adhered to Catholicism .,5,1
+wallpaper,,adhere, Will this wallpaper adhere to the wall ?,3,0
+steering,,answer, The steering of my new car answers to the slightest touch .,6,1
+telephone,,answer, answer the telephone .,0,0
+question,,answer, The question concerning the meaning of life can not be answered .,10,0
+defendant,,answer, The defendant answered to all the charges of the prosecution .,2,0
+mountain,,ascend, We ascended the mountain .,1,0
+inheritance,,ascend, Inheritance may not ascend linearly .,3,1
+path,,ascend, The path ascended to the top of the hill .,2,0
+poland,,attack," Hitler attacked Poland on September 1 , 1939 and started World War II .",1,0
+speaker,,attack, The editors of the left - leaning paper attacked the new House Speaker .,8,1
+village,,attack, The Serbs attacked the village at night .,2,0
+problem,,attack, I attacked the problem as soon as I got out of bed .,1,1
+cancer,,attack, The cancer cells are attacking his liver .,4,1
+vienna,,besiege, The Turks besieged Vienna .,2,0
+problem,,besiege, She was besieged by so many problems that she got discouraged .,2,1
+press,,besiege, The press photographers besieged the movie star .,3,1
+foot,,bind, The Chinese would bind the feet of their women .,3,0
+book,,bind, They bind their books in leather .,1,0
+oxygen,,bind, The hydrogen binds the oxygen .,2,1
+meteor,,blaze, Meteors blazed across the atmosphere .,1,1
+pine,,blaze, The summer sun alone can cause a pine to blaze .,9,0
+spaceship,,blaze, The spaceship blazed out into space .,2,1
+foot,,blister, Her feet blistered during the long hike .,2,0
+administration,,blister, The Senator blistered the administration in his speech on Friday .,2,1
+haze,,blur, The haze blurs the hills .,2,0
+vision,,blur, The fog blurs my vision .,2,0
+distinction,,blur, The distinction between the two theories blurred .,6,1
+listener,,bolt, The listeners bolted when he discussed his strange ideas .,2,1
+food,,bolt, Do n't bolt your food !,2,1
+economy,,boost, The tax cut will boost the economy .,4,1
+voltage,,boost, Boost the voltage in an electrical circuit .,0,0
+singer,,boost, The singer had to be boosted onto the stage by a special contraption .,5,0
+ball,,bounce, The rubber ball bounced .,3,0
+people,,bounce, The ex - boxer 's job is to bounce people who want to enter this private club .,8,1
+government,,bow, The government bowed to the military pressure .,2,1
+life,,breathe, He breathed new life into the old house .,1,1
+fabric,,breathe, Our new synthetic fabric breathes and is perfect for summer wear .,4,1
+hair,,brush, Johnson brushed the hairs from his jacket .,1,0
+wall,,brush, He brushed the wall lightly .,1,0
+suit,,brush, She brushed the suit before hanging it back into the closet .,1,0
+suspense,,build, Suspense was building right from the beginning of the opera .,2,1
+school,,build, The government is building new schools in this state .,3,0
+nation,,build, build a modern nation .,0,1
+architect,,build, These architects build in interesting and new styles .,2,0
+defense,,build, build a defense on nothing but the accused person 's reputation .,0,1
+sum,,buy, This sum will buy you a ride on the train .,3,0
+love,,buy, She wanted to buy his love with her dedication to him and his work .,3,0
+story,,buy, I ca n't buy this story .,3,1
+bee,,buzz, bees were buzzing around the hive .,2,0
+plane,,buzz, Planes buzzed the crowds in the square .,1,0
+office,,buzz, This office is buzzing with activity .,3,1
+servant,,buzz, he buzzed the servant .,1,1
+essence,,capture, capture the essence of Spring   .,0,1
+heart,,capture, She captured all the men 's hearts .,1,1
+neutron,,capture, This nucleus has captured the slow - moving neutrons .,3,0
+way,,claw, They clawed their way to the top of the mountain .,1,1
+doorknob,,claw, She clawed the doorknob .,1,1
+rival,,claw, The politician clawed his rival .,2,1
+hill,,climb, Did you ever climb up the hill behind your house ?,3,0
+sale,,climb, Sales were climbing after prices were lowered .,2,1
+price,,climb, Sales were climbing after prices were lowered .,2,1
+path,,climb, The path climbed all the way to the top of the hill .,2,1
+drain,,clog, The leaves clog our drains in the Fall .,2,0
+horse,,clog, horses were clogged until they were tamed .,2,1
+market,,clog, The market is being clogged by these operations .,4,1
+mind,,clog, Fear clogged her mind .,1,1
+smoke,,cloud, The smoke clouded above the houses .,2,0
+face,,cloud, Their faces were clouded with sadness .,3,1
+memory,,cloud, The stroke clouded memories of her youth .,2,1
+liquid,,cloud, The chemical clouded the liquid to which it was added .,2,1
+idea,,color, His political ideas color his lectures .,3,1
+wall,,color, color the walls with paint in warm tones .,0,0
+act,,commit, commit a random act of kindness .,0,0
+message,,communicate, Please communicate this message to all employees .,1,0
+anxiety,,communicate, He communicated his anxieties to the psychiatrist .,1,0
+disease,,communicate, communicate a disease .,0,1
+room,,communicate, The rooms communicated .,2,1
+haircut,,compare, John compared his haircut to his friend 's .,1,0
+car,,compare, This car does not compare with our line of Mercedes .,4,0
+dynasty,,compare, We can compare the Han dynasty to the Romans .,2,0
+personality,,compose, Greed and ambition composed his personality .,3,1
+symphony,,compose, Beethoven composed nine symphonies .,1,0
+office,,computerize, Our office is fully computerized now .,4,0
+industry,,computerize, They computerized the car industry .,1,0
+content,,condense, condense the contents of a book into a summary .,0,1
+air,,condense, The cold air condensed the steam .,3,0
+planet,,condense, All our planets condensed out of the same material .,3,0
+plan,,condense, Congress condensed the three - year plan into a six - month plan .,1,1
+crowd,,convulse, The comedian convulsed the crowd .,2,1
+earthquake,,convulse, earthquakes convulsed the countryside .,1,1
+spasm,,convulse, The spasm convulses her facial muscles .,2,0
+muscle,,convulse, The muscles in her face convulsed .,5,0
+crocodile,,crawl, The crocodile was crawling along the riverbed .,3,0
+skin,,crawl, My skin crawled -- I was terrified .,2,1
+cheese,,crawl, The old cheese was crawling with maggots .,4,1
+child,,crawl, European children learn the breast stroke ; they often do n't know how to crawl .,14,0
+prince,,crown, The prince was crowned in Westminster Abbey .,3,0
+meeting,,crown, The speech crowned the meeting .,2,1
+building,,crown, A weather vane crowns the building .,3,1
+can,,crush, crush an aluminum can .,0,0
+toy,,crush, The car crushed the toy .,2,0
+refusal,,crush, She was crushed by his refusal of her invitation .,2,1
+bottle,,crush, The plastic bottle crushed against the wall .,3,0
+smoke,,curl, The cigar smoke curled up at the ceiling .,3,1
+hair,,curl," Curl my hair , please .",0,0
+plate,,dash, He dashed the plate against the wall .,1,0
+ambition,,dash, dashed ambitions and hopes .,0,1
+paint,,dash, blue paint dashed with white .,2,0
+mattress,,deflate, deflate the air mattress .,0,0
+confidence,,deflate, The bad review of his work deflated his self - confidence .,6,1
+economy,,deflate, The new measures deflated the economy .,3,1
+currency,,deflate, deflate the currency .,0,1
+balloon,,deflate, The balloons deflated .,2,0
+suit,,design, Chanel designed the famous suit .,1,0
+excuse,,design, She designed a good excuse for not attending classes that day .,1,1
+home,,devour, Fire had devoured our home .,2,1
+novel,,devour, She devoured his novels .,1,1
+sandwich,,devour, he devoured three sandwiches .,1,0
+milk,,digest, I can not digest milk products .,3,0
+information,,digest, I can not digest all this information .,3,1
+protein,,digest, Protein digests in a few hours .,1,0
+law,,digest, the government digested the entire law into a code .,2,1
+martini,,down, He downed three martinis before dinner .,1,1
+pound,,down, Some people can down a pound of meat in the course of one meal .,3,1

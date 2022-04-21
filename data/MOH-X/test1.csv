@@ -1,0 +1,121 @@
+arg1,arg2,verb,sentence,verb_idx,label
+indifference,,steam, her indifference to his amorous advances really steamed the young man .,7,1
+vegetable,,steam, just steam the vegetables .,1,0
+bill,,steamroller, The Senator steamrollered the bill to defeat .,2,1
+teacher,,steamroller, The new teacher tends to steamroller .,5,1
+road,,steamroller, steamroller the road .,0,0
+opposition,,steamroller, steamroller the opposition .,0,1
+mane,,stream, their manes streamed like stiff black pennants in the wind .,2,1
+sweat,,stream, She was streaming with sweat .,2,1
+tear,,stream, Tears streamed down her face .,1,0
+nose,,stuff, My nose is all stuffed .,4,0
+dinner,,stuff, She stuffed herself at the dinner .,1,1
+pillow,,stuff, stuff a pillow with feathers .,0,0
+turkey,,stuff, Have you stuffed the turkey yet ?,2,0
+poison,,suck, suck the poison from the place where the snake bit .,0,0
+worker,,suck, The current boom in the economy sucked many workers in from abroad .,6,1
+country,,swallow, The Nazis swallowed the Baltic countries .,2,1
+wave,,swallow, The huge waves swallowed the small boat and it sank shortly thereafter .,3,1
+word,,swallow, She swallowed the last words of her speech .,1,1
+word,,swallow, He swallowed his words .,1,1
+anger,,swallow, I swallowed my anger and kept quiet .,1,1
+story,,swallow, Am I supposed to swallow that story ?,4,1
+music,,swell, The music swelled to a crescendo .,2,1
+mother,,swell, The mother was swelling with importance when she spoke of her son .,3,1
+belly,,swell, The bellies of the starving children are swelling .,7,0
+wood,,swell, The water swells the wood .,2,0
+brain,,swim, my brain is swimming after the bottle of champagne .,3,1
+meat,,swim, the meat was swimming in a fatty gravy .,3,1
+snake,,swim, this snake swims through the soil where it lives .,2,0
+notice,,tack, tack the notice on the board .,0,0
+boat,,tack, The sailors decided to tack the boat .,4,0
+verse,,tack, He tacked together some verses .,1,1
+action,,talk, Actions talk louder than words .,1,1
+baby,,talk, The baby talks already .,2,0
+garlic,,taste, Can you taste the garlic ?,2,0
+wine,,taste, We tasted wines last night .,1,0
+freedom,,taste, The ex - slave tasted freedom shortly before she died .,4,1
+state,,tax, The State taxes alcohol heavily .,2,0
+patience,,tax, You are taxing my patience .,2,1
+failure,,tax, They taxed him failure to appear in court .,1,1
+muscle,,tense, the bodybuilder 's neck muscles tensed .,5,0
+bus,,thunder, The bus thundered down the road .,2,1
+river,,thunder, The river thundered below .,2,1
+victim,,tie, They tied their victim to the chair .,1,0
+jet,,tie, These big jets are tied to large airports .,4,1
+fly,,tie, The fishermen tied their flies .,2,0
+dinner,,top, They topped off their dinner with a cognac .,1,1
+tree,,top, A star tops the Christmas Tree .,2,0
+tower,,top, The towers were topped with conical roofs .,3,0
+hiker,,top, The hikers topped the mountain just before noon .,2,1
+outline,,trace, trace the outline of a figure in the sand .,0,0
+deer,,trace, The hunters traced the deer into the woods .,2,0
+circumstance,,trace, She traced the circumstances of her birth .,1,1
+experience,,transform, This experience transformed her completely .,2,1
+energy,,transform, It can transform energy to light .,2,0
+grape,,tread, tread grapes to make wine .,0,0
+bird,,tread, male birds tread the females .,2,0
+camp,,trench, He trenched his military camp .,1,0
+letter,,trench, letters trenched into the stone .,1,0
+soldier,,trench, trench the fallen soldiers .,0,0
+chain,,tug, The prisoner tugged at the chains .,2,0
+living,,tug, She tugged for years to make a decent living .,1,1
+freighter,,tug, The tugboat tugged the freighter into the harbor .,2,0
+cart,,tug, The horse finally tugged the cart out of the mud .,3,0
+shoulder,,twist, The wrestler twisted his shoulder .,2,0
+cord,,twist, The cord is all twisted .,4,0
+word,,twist, Do n't twist my words .,2,1
+people,,uproot, The war uprooted many people .,2,1
+democracy,,uproot, The vestiges of political democracy were soon uprooted .,7,1
+vine,,uproot, They plan to uproot the vine that has spread all over the garden .,3,0
+fortune,,vest, She vested her vast fortune in her two sons .,1,0
+property,,vest, The property vests in the trustees .,2,0
+paris,,visit, Did you ever visit Paris ? .,3,0
+rage,,visit, The principal visited his rage on the students .,2,1
+relative,,visit," Every summer , we visited our relatives in the country for a month .",4,0
+illness,,visit," Every summer , we visited our relatives in the country for a month .",4,1
+ball,,volley, They began to volley the tennis ball .,3,0
+curse,,volley, I heard him volley a string of curses .,3,1
+pig,,wallow, pigs were wallowing in the mud .,2,0
+success,,wallow, wallow in your success !,0,1
+yellow,,wear, She was wearing yellow that day .,2,0
+smile,,wear, He always wears a smile .,2,1
+hair,,wear, wear one 's hair in a certain way .,0,0
+bullet,,whistle, The bullets whistled past him .,2,1
+melody,,whistle, She whistled a melody .,1,0
+optimism,,whistle, Her optimism whistled away these worries .,2,1
+feeling,,wrestle, He wrestled all his life with his feeling of inferiority .,1,1
+decision,,wrestle, I wrestled with this decision for years .,1,1
+child,,wrestle, The children wrestled in the garden .,2,0
+person,,bow, He bowed before the King .,1,0
+person,,breathe, I can breathe better when the air is clean .,2,0
+wine,,breathe, This rare Bordeaux must be allowed to breathe for at least 2 hours .,7,0
+drawing,,color, The child colored the drawings .,2,0
+judgement,,color, My personal feelings color my judgment in this case .,3,1
+people,,communicate, He and his sons have n't communicated for years .,6,0
+dictionary,,computerize, Please use a computerized disctionary .,3,0
+feeling,,condense, Her feelings condensed .,2,1
+person,,drain, The exercise class drains me of energy .,3,1
+employee,,dump, The company dumped him after many years of service .,2,1
+cup,,engrave, engraved the trophy cupt with the winner 's .,0,0
+people,,erase, The Turks erased the Armenians in 1915 .,2,1
+volcano,,erupt, Vesuvius erupts once in a while .,1,0
+society,,ferment, Islam is fermenting Africa .,2,1
+lens,,grind, grind lenses for glasses and cameras .,0,0
+theatre,,jam, the theater was jampacked .,3,1
+woman,,lean, She leaned over the banister .,1,0
+man,,lighten," after a glass of wine , he lightened up a bit .",7,1
+person,,lock, They were locked in embrace .,2,1
+man,,march, He marched into the classroom and announced the exam .,1,0
+feeling,,palpitate, His heart palpitated .,2,1
+man,,peep, He peeped at the woman through the window .,1,0
+painter,,portray," Goya wanted to portray his mistress , the Duchess of Alba .",3,0
+finding,,preserve, We preserve these archeological findings .,1,0
+ocean,,sail, We sailed the Atlantic .,1,0
+woman,,sing, She was singing while she was cooking .,2,0
+person,,stamp, stamp fruit extract the juice .,0,1
+man,,swim, We had to swim for 20 minutes to reach the shore .,3,0
+woman,,talk, She talks a lot of nonsense .,1,0
+person,,transform, He transformed into a monster .,1,1
+shot,,volley, Gun shots volleyed at the attackers .,2,0
+woman,,whistle, She whistled for her maid .,1,0
