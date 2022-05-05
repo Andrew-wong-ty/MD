@@ -68,14 +68,22 @@ class BERT(nn.Module):
         """
         target_pos = tokenizer.convert_tokens_to_ids(special_token) # position of special token
         input_ids_arr_np = input_ids_arr.cpu().numpy()
+        target_index = []
+        for item in input_ids_arr_np:
+            res = np.argwhere(item==target_pos)
+            if len(res)==0:
+                target_index.append(0)
+            else:
+                target_index.append(res[0][0])
+        target_index = np.array(target_index)
         position = np.argwhere(input_ids_arr_np==target_pos)[:,1]
-        assert len(input_ids_arr_np)==len(position)
+        assert len(input_ids_arr_np)==len(target_index)
         # try:
         #     assert len(input_ids_arr_np)==len(position)
         # except:
         #     print("有词没有被tag !")
         #     sys.exit() # 有词没有被tag
-        return position
+        return target_index
 
 
     def get_embeddings(self, text_arr):
