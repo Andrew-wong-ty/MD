@@ -37,8 +37,8 @@ class BERT(nn.Module):
         self.embed_dim = self.sentbert.config.hidden_size
         #如果不放开bert的话就冻住
         self.out = nn.Linear(3*self.embed_dim,self.embed_dim) # 这个是md+word的拼接
-        self.out1 = nn.Linear(self.embed_dim,n_classes)
-        self.out2 = nn.Linear(self.embed_dim*2,n_classes)
+        self.out1 = nn.Linear(self.embed_dim,n_classes) # 768->n_class
+        self.out2 = nn.Linear(self.embed_dim*2,n_classes) #768*2->n_class
 
     @staticmethod
     def cls_pooling(model_output):
@@ -126,7 +126,8 @@ class BERT(nn.Module):
 
         return embedding
     
-    def get_embeddings_PURE(self,text_arr):
+    def get_embeddings_PURE(self,text_arr,mode ="cat"):
+        assert mode in ["add","cat"]
         """
         from paper:
             A Frustratingly Easy Approach for Entity and Relation Extraction
@@ -148,8 +149,12 @@ class BERT(nn.Module):
         ent1_spos = torch.tensor(verb_start).long()
         embeddings_word = bert_output[[i for i in range(bs)],ent1_spos,:]  # 得到这个词的embedding
         embeddings_cls = bert_output[:,0]
-        embeddings = torch.cat([embeddings_cls,embeddings_word],dim = 1)
+        if mode=="cat":
+            embeddings = torch.cat([embeddings_cls,embeddings_word],dim = 1)
+        else:
+            embeddings = embeddings_cls+embeddings_word
         return embeddings,embeddings_word  # [bs, d_model]
+
     def Out(self,out):
         out = self.out(out)
         out = F.dropout(out,0.01)
@@ -165,4 +170,8 @@ class BERT(nn.Module):
         sen_embed = self.get_embeddings_PURE(texts)[0]
         out = self.out2(sen_embed)
         return out
+    # def forward_add(self,texts):
+    #     sen_embed = self.get_embeddings_PURE(texts,mode="add")[0]
+
+
 

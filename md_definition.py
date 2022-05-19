@@ -1,6 +1,7 @@
 from random import random
 import sys
 import os
+import copy
 from pathlib import Path
 
 CURR_FILE_PATH = (os.path.abspath(__file__))
@@ -12,7 +13,7 @@ for i in range(3): # add parent path, height = 3
     P = P.parent
     sys.path.append(str(P.absolute()))
 
-from utils import MDFeat, save, load, set_global_random_seed
+from utils import MDFeat, getDefinition, save, load, set_global_random_seed,obtainSynonymAndDefinition
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
@@ -23,6 +24,7 @@ import torch.utils.data as util_data
 from typing import List
 import numpy as np
 import random
+import torch.nn.functional as F
 from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score
 
 class mydataset(Dataset):
@@ -56,20 +58,30 @@ class mytestdataset(Dataset):
             "label":self.data[idx].label
         }
 
+# def data_preprocess(data:List[MDFeat]):
+#     # 给目标单词加上tags
+#     datas:List[MDFeat] = []
+#     for d in data:
+#         if d.sentence.find("<VERB>")!=-1:
+#             datas.append(d)
+#             continue
+#         try:
+#             sentence_split = d.sentence.split()
+#             sentence_split[d.verb_idx] = " <VERB> {} </VERB> ".format(sentence_split[d.verb_idx])
+#             d.sentence = " ".join(sentence_split)
+#             datas.append(d)
+#         except:
+#             continue
+#     return datas
+
 def data_preprocess(data:List[MDFeat]):
     # 给目标单词加上tags
     datas:List[MDFeat] = []
     for d in data:
-        if d.sentence.find("<VERB>")!=-1:
-            datas.append(d)
-            continue
-        try:
-            sentence_split = d.sentence.split()
-            sentence_split[d.verb_idx] = " <VERB> {} </VERB> ".format(sentence_split[d.verb_idx])
-            d.sentence = " ".join(sentence_split)
-            datas.append(d)
-        except:
-            continue
+        sentence_split = d.sentence.split()
+        sentence_split[d.verb_idx] = " <VERB> {} </VERB> ".format(sentence_split[d.verb_idx])
+        d.sentence = " ".join(sentence_split)
+        datas.append(d)
     return datas
 
 def md_main(args):
@@ -91,14 +103,49 @@ def md_main(args):
     CEloss = nn.CrossEntropyLoss()
     best_test = np.array([0.,0.,0.,0.])
     base_f1 = -1
+    # for i_batch, batch in enumerate(train_loader):
+    #     for idx,v in enumerate(batch['verb']):
+    #         definition = getDefinition(v)
+    #         if len(definition)==0:
+    #             print(v)
+    #             print(batch['sentence'][idx])
+    #             print()
+
     for i_epoch in range(args.epochs):
         model.train()
         num_iter = len(train_loader)
         batch_losses = []
         for i_batch, batch in enumerate(train_loader):
-            logits = model.forward1(batch['sentence'])
+            # 获取替换成近义词的
+            definitions = []
+            all_definitions = []
+            for _,v in enumerate(batch['verb']):
+                definition = getDefinition(v)
+                if len(definition)==0:
+                    definition = getDefinition("go")
+                definitions.append(definition[:10])
+                all_definitions.extend(definition[:10])
+
+            text_feats = model.get_embeddings_PURE(batch['sentence'],"add")[0]
+            definition_feats = model.get_embeddings(all_definitions)
+            definition_cat_feat = []
+            curr_idx = 0
+            for idx,definition in enumerate(definitions):
+                N = len(definition)
+                definition_feat = definition_feats[curr_idx:curr_idx+N]
+                # print(curr_idx,curr_idx+N)
+                # 计算attention
+                alpha = F.softmax((text_feats[idx]*definition_feat).sum(-1),dim=-1).reshape(-1,1)
+                definition_feat = (definition_feat*alpha).mean(0)
+                definition_cat_feat.append(definition_feat)
+                curr_idx+=N
+            definition_cat_feat = torch.stack(definition_cat_feat,dim=0)
+            text_feats = torch.cat([text_feats,definition_cat_feat],dim=-1)
+            logits = model.out2(text_feats)
             loss = CEloss(logits,batch['label'].to(device))
             
+
+
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()
@@ -108,35 +155,66 @@ def md_main(args):
                     %( i_epoch+1, args.epochs, i_batch+1, num_iter, np.mean(batch_losses)))
             sys.stdout.flush()
             # break
+            # if i_batch==100:
+            #     break
         model.eval()
         dev_preds = []
         dev_gt = []
-        if args.mode!="10fold":
-            with torch.no_grad():
-                for i_batch, batch in enumerate(dev_loader):
-                    logits = model.forward1(batch['sentence'])
-                    _, pred = torch.max(logits.data, -1) 
-                    dev_preds.extend(pred.detach().cpu().numpy().tolist())
-                    dev_gt.extend(batch['label'].numpy().tolist())
-                dev_acc = accuracy_score(dev_gt, dev_preds)
-                dev_pre = precision_score(dev_gt, dev_preds)
-                dev_rec = recall_score(dev_gt, dev_preds)
-                dev_f1 = f1_score(dev_gt, dev_preds)
-                # dev_pre, dev_rec, dev_f1, _ = precision_recall_fscore_support(
-                #     dev_gt, dev_preds, average="macro")
-                # dev_acc = sum(np.array(dev_preds)==np.array(dev_gt))/len(dev_gt)
-                sys.stdout.write("\n")
-                sys.stdout.write('Dev   : | Epoch [%3d/%3d] f1: %.4f acc: %.4f pre: %.4f recall: %.4f  '
-                        %( i_epoch+1, args.epochs, dev_f1, dev_acc,dev_pre,dev_rec))
-                sys.stdout.write("\n")
-                if dev_f1>base_f1:
-                    base_f1 = dev_f1
-                    print("This is the best!")
-                dev_preds = []
-                dev_gt = []
+        # if args.mode!="10fold":
+        #     with torch.no_grad():
+        #         for i_batch, batch in enumerate(dev_loader):
+        #             logits = model.forward1(batch['sentence'])
+        #             _, pred = torch.max(logits.data, -1) 
+        #             dev_preds.extend(pred.detach().cpu().numpy().tolist())
+        #             dev_gt.extend(batch['label'].numpy().tolist())
+        #         dev_acc = accuracy_score(dev_gt, dev_preds)
+        #         dev_pre = precision_score(dev_gt, dev_preds)
+        #         dev_rec = recall_score(dev_gt, dev_preds)
+        #         dev_f1 = f1_score(dev_gt, dev_preds)
+        #         # dev_pre, dev_rec, dev_f1, _ = precision_recall_fscore_support(
+        #         #     dev_gt, dev_preds, average="macro")
+        #         # dev_acc = sum(np.array(dev_preds)==np.array(dev_gt))/len(dev_gt)
+        #         sys.stdout.write("\n")
+        #         sys.stdout.write('Dev   : | Epoch [%3d/%3d] f1: %.4f acc: %.4f pre: %.4f recall: %.4f  '
+        #                 %( i_epoch+1, args.epochs, dev_f1, dev_acc,dev_pre,dev_rec))
+        #         sys.stdout.write("\n")
+        #         if dev_f1>base_f1:
+        #             base_f1 = dev_f1
+        #             print("This is the best!")
+        #         dev_preds = []
+        #         dev_gt = []
         with torch.no_grad():
             for i_batch, batch in enumerate(test_loader):
-                logits = model.forward1(batch['sentence'])
+
+
+                definitions = []
+                all_definitions = []
+                for _,v in enumerate(batch['verb']):
+                    definition = getDefinition(v)
+                    if len(definition)==0:
+                        definition = getDefinition("go")
+                    definitions.append(definition[:10])
+                    all_definitions.extend(definition[:10])
+
+                text_feats = model.get_embeddings_PURE(batch['sentence'],"add")[0]
+                definition_feats = model.get_embeddings(all_definitions)
+                definition_cat_feat = []
+                curr_idx = 0
+                for idx,definition in enumerate(definitions):
+                    N = len(definition)
+                    definition_feat = definition_feats[curr_idx:curr_idx+N]
+                    # print(curr_idx,curr_idx+N)
+                    # 计算attention
+                    alpha = F.softmax((text_feats[idx]*definition_feat).sum(-1),dim=-1).reshape(-1,1)
+                    definition_feat = (definition_feat*alpha).mean(0)
+                    definition_cat_feat.append(definition_feat)
+                    curr_idx+=N
+                definition_cat_feat = torch.stack(definition_cat_feat,dim=0)
+                text_feats = torch.cat([text_feats,definition_cat_feat],dim=-1)
+                logits = model.out2(text_feats)
+                loss = CEloss(logits,batch['label'].to(device))
+
+
                 _, pred = torch.max(logits.data, -1) 
                 dev_preds.extend(pred.detach().cpu().numpy().tolist())
                 dev_gt.extend(batch['label'].numpy().tolist())
@@ -165,7 +243,7 @@ if __name__=="__main__":
     parser.add_argument("--batch_size", type=int,default=32, help="as named")
     parser.add_argument('--seed', type=int, default=16, help='as named')
     ## VUA_verb
-    parser.add_argument("--train_path", type=str,default="/home/tywang/MD/data/VUA/vua_MLM_whole_data.pkl", help="as named")
+    parser.add_argument("--train_path", type=str,default="/home/tywang/MD/data/VUA/vua_train.pkl", help="as named")
     parser.add_argument("--dev_path", type=str,default="/home/tywang/MD/data/VUA/vua_dev.pkl", help="as named")
     parser.add_argument("--test_path", type=str,default="/home/tywang/MD/data/VUA/vua_test.pkl", help="as named")
 
